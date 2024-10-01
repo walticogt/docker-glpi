@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: glpi_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: glpi
+      MYSQL_USER: glpi_user
+      MYSQL_PASSWORD: glpi_password
+    volumes:
+      - glpi_db_data:/var/lib/mysql
+
+  glpi:
+    image: diouxx/glpi:latest
+    container_name: glpi_app
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      TZ: "America/Los_Angeles"
+      DB_HOST: db
+      DB_USER: glpi_user
+      DB_PASSWORD: glpi_password
+      DB_NAME: glpi
+    volumes:
+      - glpi_data:/var/www/html
+
+volumes:
+  glpi_db_data:
+  glpi_data:
