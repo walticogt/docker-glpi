@@ -35,8 +35,6 @@ Comandos adicionales:
 -- Levantar el servicio (desde donde esta el archivo .yml):
 	docker-compose up -d
 	
--- Recuerde las claves HUANCA-PC: glpi / glpi1
-
 
 -- Listar
 	docker ps -a
