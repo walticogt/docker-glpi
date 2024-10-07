@@ -1,21 +1,28 @@
-Donde el puerto es 8080
+-- Desde Powershell (donde esta docker-compose.yml)
+docker-compose up -d
+
+
+-- En el navegador http://localhost:8080 continuar con los paso de instalación
 Base de datos es: db
 User: glpi_user
 Pwd: glpi_password
 
--- Desde Powershell (donde esta docker-compose.yml)
-docker-compose up -d
 
--- En el navegador http://localhost:8080 continuar con los paso de instalación
 -- Se recomienda despues de ello cambiar las contraseñas para evitar advertencias:
 	glpi/glpi para la cuenta de administrador 
 	tech/tech para la cuenta de técnico 
 	normal/normal para cuenta normal 
 	post-only/postonly para cuenta sólo-reportar
+
+-- Desde powersheell para entrar a la terminal del Docker creado ("Docker ps -a" para listar)
+	docker exec -it glpi_app /bin/bash
+
 -- Eliminar la carpeta install para evitar advertencias
 	rm -rf /var/www/html/glpi/install
+
 -- Reiniciar.
 	docker-compose restart
+
 
 Comandos adicionales:
 
@@ -30,4 +37,20 @@ Comandos adicionales:
 	
 -- Recuerde las claves HUANCA-PC: glpi / glpi1
 
+
+-- Listar
+	docker ps -a
+
+-- Parar y remover
+	docker stop <container_id>
+	docker rm <container_id>
+
+-- Eliminar
+	docker rmi hello-world
+
+*****
+	Eliminar contenedores, luego imágenes, volumenes
+
+
+-------------
 
